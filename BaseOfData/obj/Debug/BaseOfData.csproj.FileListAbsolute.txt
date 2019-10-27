@@ -13,3 +13,18 @@ D:\work\Базы данных\BaseOfData\BaseOfData\bin\Debug\Renci.SshNet.dll
 D:\work\Базы данных\BaseOfData\BaseOfData\bin\Debug\BouncyCastle.Crypto.dll
 D:\work\Базы данных\BaseOfData\BaseOfData\bin\Debug\MySql.Data.xml
 D:\work\Базы данных\BaseOfData\BaseOfData\obj\Debug\BaseOfData.csproj.CopyComplete
+D:\work\BD\BaseOfData\BaseOfData\bin\Debug\BaseOfData.exe.config
+D:\work\BD\BaseOfData\BaseOfData\bin\Debug\BaseOfData.exe
+D:\work\BD\BaseOfData\BaseOfData\bin\Debug\BaseOfData.pdb
+D:\work\BD\BaseOfData\BaseOfData\bin\Debug\MySql.Data.dll
+D:\work\BD\BaseOfData\BaseOfData\bin\Debug\Google.Protobuf.dll
+D:\work\BD\BaseOfData\BaseOfData\bin\Debug\Renci.SshNet.dll
+D:\work\BD\BaseOfData\BaseOfData\bin\Debug\BouncyCastle.Crypto.dll
+D:\work\BD\BaseOfData\BaseOfData\bin\Debug\MySql.Data.xml
+D:\work\BD\BaseOfData\BaseOfData\obj\Debug\BaseOfData.csprojAssemblyReference.cache
+D:\work\BD\BaseOfData\BaseOfData\obj\Debug\BaseOfData.Form1.resources
+D:\work\BD\BaseOfData\BaseOfData\obj\Debug\BaseOfData.Properties.Resources.resources
+D:\work\BD\BaseOfData\BaseOfData\obj\Debug\BaseOfData.csproj.GenerateResource.cache
+D:\work\BD\BaseOfData\BaseOfData\obj\Debug\BaseOfData.csproj.CopyComplete
+D:\work\BD\BaseOfData\BaseOfData\obj\Debug\BaseOfData.exe
+D:\work\BD\BaseOfData\BaseOfData\obj\Debug\BaseOfData.pdb
