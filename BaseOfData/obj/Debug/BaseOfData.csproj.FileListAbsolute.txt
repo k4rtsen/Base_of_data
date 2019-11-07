@@ -28,3 +28,4 @@ D:\work\BD\BaseOfData\BaseOfData\obj\Debug\BaseOfData.csproj.GenerateResource.ca
 D:\work\BD\BaseOfData\BaseOfData\obj\Debug\BaseOfData.csproj.CopyComplete
 D:\work\BD\BaseOfData\BaseOfData\obj\Debug\BaseOfData.exe
 D:\work\BD\BaseOfData\BaseOfData\obj\Debug\BaseOfData.pdb
+D:\work\BD\BaseOfData\BaseOfData\obj\Debug\BaseOfData.Form2.resources
