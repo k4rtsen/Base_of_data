@@ -392,7 +392,7 @@ namespace BaseOfData
 
         private void добавитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form2 form2 = new Form2();
+            Form2 form2 = new Form2(conn);
             form2.Show();
         }
     }
