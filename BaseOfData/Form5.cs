@@ -11,38 +11,39 @@ using MySql.Data.MySqlClient;
 
 namespace BaseOfData
 {
-    public partial class Form2 : Form
+    public partial class Form5 : Form
     {
         private MySqlConnection conn;
-        List<string[]> groupp;
+        List<string[]> dep;
 
-        public Form2(MySqlConnection connection)
+        public Form5(MySqlConnection connection)
         {
             InitializeComponent();
             conn = connection;
-            InitGroupp();
+            InitDep();
         }
 
-        private void InitGroupp() {
+        private void InitDep()
+        {
             if (conn.State == ConnectionState.Open)
             {
-                string name = "SELECT * FROM groupp ORDER BY name_group";
+                string name = "SELECT * FROM dep ORDER BY name_dep";
                 MySqlCommand command = new MySqlCommand(name, conn);
                 MySqlDataReader reader = command.ExecuteReader();
-                groupp = new List<string[]>();
+                dep = new List<string[]>();
                 while (reader.Read())
                 {
-                    groupp.Add(new string[3]);
+                    dep.Add(new string[3]);
 
-                    groupp[groupp.Count - 1][0] = reader[0].ToString();
-                    groupp[groupp.Count - 1][1] = reader[1].ToString();
-                    groupp[groupp.Count - 1][2] = reader[2].ToString();
+                    dep[dep.Count - 1][0] = reader[0].ToString();
+                    dep[dep.Count - 1][1] = reader[1].ToString();
+                    dep[dep.Count - 1][2] = reader[2].ToString();
                 }
                 reader.Close();
 
                 comboBox1.Text = "";
                 comboBox1.Items.Clear();
-                for (int i = 0; i < groupp.Count; i++) comboBox1.Items.Add(groupp[i][1]);
+                for (int i = 0; i < dep.Count; i++) comboBox1.Items.Add(dep[i][1]);
             }
             else MessageBox.Show(
                         "Установите соединение с БД, иначе функции будут недоступны.",
@@ -51,22 +52,24 @@ namespace BaseOfData
                         MessageBoxIcon.Warning);
         }
 
-        private void button1_Click(object sender, EventArgs e) {
-            if (conn.State == ConnectionState.Open) {
-                if (textBox1.Text != "" && textBox2.Text != "" && textBox3.Text != "" && comboBox1.Text != "") {
-                    for (int i = 0; i < groupp.Count; i++)
-                        if (groupp[i][1] == comboBox1.Text) {
-                            string name = "INSERT INTO `accounting`.`student` (`name_student`, `sur" +
-                                "name_student`, `date_of_berth`, `id_group`) VALUES " +
-                                "('" + textBox1.Text + "', '" + textBox2.Text + "', '" + textBox3.Text + "'," +
-                                " '" + groupp[i][0] + "');";
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (conn.State == ConnectionState.Open)
+            {
+                if (textBox1.Text != "" && textBox2.Text != "" && textBox3.Text != "" && comboBox1.Text != "")
+                {
+                    for (int i = 0; i < dep.Count; i++)
+                        if (dep[i][1] == comboBox1.Text)
+                        {
+                            string name = "INSERT INTO `accounting`.`teacher` (`name_teacher`, `surname_teacher`, " +
+                                "`patronymic`, `id_dep`) VALUES " +
+                                "('" + textBox2.Text + "', '" + textBox1.Text + "', '" + textBox3.Text + "'," +
+                                " '" + dep[i][0] + "');";
                             MySqlCommand command = new MySqlCommand(name, conn);
                             command.ExecuteNonQuery();
-                            InitGroupp();
+                            InitDep();
                             break;
                         }
-                    Form1 form1 = new Form1();
-                    form1.UpdateStudentTable(sender, e);
                 }
                 else MessageBox.Show(
                         "Заполните все поля.",

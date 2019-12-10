@@ -73,13 +73,13 @@ namespace BaseOfData
                         MessageBoxIcon.Error);
             }
         }
- 
+
         private void студентToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (conn.State == ConnectionState.Open)
             {
-                string name = "SELECT name_student, surname_student, date_of_berth, name_group FROM " +
-                    "student inner join accounting.groupp on groupp.idGroup = student.id_group; ";
+                string name = "SELECT surname_student, name_student, date_of_berth, name_group FROM " +
+                    "student INNER JOIN accounting.groupp on groupp.idGroup = student.id_group ORDER BY surname_student;";
                 MySqlCommand command = new MySqlCommand(name, conn);
                 MySqlDataReader reader = command.ExecuteReader();
 
@@ -94,6 +94,7 @@ namespace BaseOfData
                     data[data.Count - 1][3] = reader[3].ToString();
                 }
                 reader.Close();
+                dataGridView1.Columns.Clear();
                 dataGridView1.Rows.Clear();
                 dataGridView1.ColumnCount = data.Count;
                 dataGridView1.Columns[0].HeaderText = "Имя";
@@ -113,8 +114,8 @@ namespace BaseOfData
         {
             if (conn.State == ConnectionState.Open)
             {
-                string name = "SELECT name_teacher, surname_teacher, patronymic, name_dep FROM " +
-                    "teacher inner join accounting.dep on dep.id_dep = teacher.id_dep; ";
+                string name = "SELECT surname_teacher, name_teacher, patronymic, name_dep FROM " +
+                    "teacher inner join accounting.dep on dep.id_dep = teacher.id_dep ORDER BY surname_teacher;";
                 MySqlCommand command = new MySqlCommand(name, conn);
                 MySqlDataReader reader = command.ExecuteReader();
 
@@ -129,10 +130,11 @@ namespace BaseOfData
                     data[data.Count - 1][3] = reader[3].ToString();
                 }
                 reader.Close();
+                dataGridView1.Columns.Clear();
                 dataGridView1.Rows.Clear();
                 dataGridView1.ColumnCount = data.Count + 1;
-                dataGridView1.Columns[0].HeaderText = "Имя";
-                dataGridView1.Columns[1].HeaderText = "Фамилия";
+                dataGridView1.Columns[0].HeaderText = "Фамилия";
+                dataGridView1.Columns[1].HeaderText = "Имя";
                 dataGridView1.Columns[2].HeaderText = "Отчество";
                 dataGridView1.Columns[3].HeaderText = "Кафедра";
                 foreach (string[] s in data) dataGridView1.Rows.Add(s);
@@ -149,7 +151,7 @@ namespace BaseOfData
             if (conn.State == ConnectionState.Open)
             {
                 string name = "SELECT name_subject, type_mark, count, semestr, surname_teacher  FROM " +
-                    "subject inner join accounting.teacher on teacher.idTeacher = subject.id_teacher; ";
+                    "subject inner join accounting.teacher on teacher.idTeacher = subject.id_teacher ORDER BY name_subject;";
                 MySqlCommand command = new MySqlCommand(name, conn);
                 MySqlDataReader reader = command.ExecuteReader();
 
@@ -165,6 +167,7 @@ namespace BaseOfData
                     data[data.Count - 1][4] = reader[4].ToString();
                 }
                 reader.Close();
+                dataGridView1.Columns.Clear();
                 dataGridView1.Rows.Clear();
                 dataGridView1.ColumnCount = data.Count + 2;
                 dataGridView1.Columns[0].HeaderText = "Дисциплина";
@@ -185,10 +188,10 @@ namespace BaseOfData
         {
             if (conn.State == ConnectionState.Open)
             {
-                string name = "SELECT name_student, name_subject, mark, day_ex, surname_teacher FROM " +
+                string name = "SELECT surname_student, name_student, name_subject, mark, day_ex, surname_teacher FROM " +
                     "ap inner join accounting.teacher on teacher.idTeacher = ap.id_teacher " +
                     "inner join accounting.student on student.idstudent = ap.id_student " +
-                    "inner join accounting.subject on subject.idsubject = ap.id_subject;";
+                    "inner join accounting.subject on subject.idsubject = ap.id_subject ORDER BY surname_student;";
                 MySqlCommand command = new MySqlCommand(name, conn);
                 MySqlDataReader reader = command.ExecuteReader();
 
@@ -197,15 +200,16 @@ namespace BaseOfData
                 {
                     data.Add(new string[5]);
 
-                    data[data.Count - 1][0] = reader[0].ToString();
-                    data[data.Count - 1][1] = reader[1].ToString();
-                    data[data.Count - 1][2] = reader[2].ToString();
-                    data[data.Count - 1][3] = reader[3].ToString();
-                    data[data.Count - 1][4] = reader[4].ToString();
+                    data[data.Count - 1][0] = reader[0].ToString() + " " + reader[1].ToString();
+                    data[data.Count - 1][1] = reader[2].ToString();
+                    data[data.Count - 1][2] = reader[3].ToString();
+                    data[data.Count - 1][3] = reader[4].ToString();
+                    data[data.Count - 1][4] = reader[5].ToString();
                 }
                 reader.Close();
+                dataGridView1.Columns.Clear();
                 dataGridView1.Rows.Clear();
-                dataGridView1.ColumnCount = data.Count + 1;
+                dataGridView1.ColumnCount = data.Count + 2;
                 dataGridView1.Columns[0].HeaderText = "Студент";
                 dataGridView1.Columns[1].HeaderText = "Дисциплина";
                 dataGridView1.Columns[2].HeaderText = "Оценка";
@@ -239,7 +243,7 @@ namespace BaseOfData
                 }
                 reader.Close();
 
-                name = "SELECT * FROM faculty";
+                name = "SELECT * FROM faculty ORDER BY name_faculty";
                 command = new MySqlCommand(name, conn);
                 reader = command.ExecuteReader();
 
@@ -294,7 +298,7 @@ namespace BaseOfData
                 }
                 reader.Close();
 
-                name = "SELECT * FROM dep";
+                name = "SELECT * FROM dep ORDER BY name_dep";
                 command = new MySqlCommand(name, conn);
                 reader = command.ExecuteReader();
 
@@ -335,7 +339,7 @@ namespace BaseOfData
         {
             if (conn.State == ConnectionState.Open)
             {
-                string name = "SELECT * FROM student";
+                string name = "SELECT * FROM student ORDER BY surname_student";
                 MySqlCommand command = new MySqlCommand(name, conn);
                 MySqlDataReader reader = command.ExecuteReader();
 
@@ -352,7 +356,7 @@ namespace BaseOfData
                 }
                 reader.Close();
 
-                name = "SELECT * FROM groupp";
+                name = "SELECT * FROM groupp name_group";
                 command = new MySqlCommand(name, conn);
                 reader = command.ExecuteReader();
 
@@ -379,7 +383,7 @@ namespace BaseOfData
                     for (int j = 0; j < data.Count; j++)
                     {
                         if (data1[i][0] == data[j][4])
-                            dataGridView1.Rows[i].Cells[1].Value += data[j][1] + " " + data[j][2] + "; ";
+                            dataGridView1.Rows[i].Cells[1].Value += data[j][2] + " " + data[j][1] + "; ";
                     }
                 }
             }
@@ -390,10 +394,72 @@ namespace BaseOfData
                         MessageBoxIcon.Error);
         }
 
-        private void добавитьToolStripMenuItem_Click(object sender, EventArgs e)
+        public void UpdateStudentTable(object sender, EventArgs e)
+        {
+        //    conn.Open();
+
+        //    string name = "SELECT surname_student, name_student, date_of_berth, name_group FROM " +
+        //        "student INNER JOIN accounting.groupp on groupp.idGroup = student.id_group ORDER BY surname_student;";
+        //    MySqlCommand command = new MySqlCommand(name, conn);
+        //    MySqlDataReader reader = command.ExecuteReader();
+
+        //    List<string[]> data = new List<string[]>();
+        //    while (reader.Read())
+        //    {
+        //        data.Add(new string[4]);
+
+        //        data[data.Count - 1][0] = reader[0].ToString();
+        //        data[data.Count - 1][1] = reader[1].ToString();
+        //        data[data.Count - 1][2] = reader[2].ToString();
+        //        data[data.Count - 1][3] = reader[3].ToString();
+        //    }
+        //    reader.Close();
+        //    dataGridView1.Columns.Clear();
+        //    dataGridView1.Rows.Clear();
+        //    dataGridView1.ColumnCount = data.Count;
+        //    dataGridView1.Columns[0].HeaderText = "Имя";
+        //    dataGridView1.Columns[1].HeaderText = "Фамилия";
+        //    dataGridView1.Columns[2].HeaderText = "Дата рождения";
+        //    dataGridView1.Columns[3].HeaderText = "Группа";
+        //    foreach (string[] s in data) dataGridView1.Rows.Add(s);
+
+        //    conn.Close();
+        }
+
+        private void добавитьToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Form2 form2 = new Form2(conn);
             form2.Show();
+        }
+
+        private void изменитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form3 form3 = new Form3(conn);
+            form3.Show();
+        }
+
+        private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form4 form4 = new Form4(conn);
+            form4.Show();
+        }
+
+        private void добавитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form5 form5 = new Form5(conn);
+            form5.Show();
+        }
+
+        private void изменитьToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form6 form6 = new Form6(conn);
+            form6.Show();
+        }
+
+        private void удалитьToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form7 form7 = new Form7(conn);
+            form7.Show();
         }
     }
 }
