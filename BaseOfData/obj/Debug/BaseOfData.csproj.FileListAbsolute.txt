@@ -32,3 +32,7 @@ D:\work\BD\BaseOfData\BaseOfData\obj\Debug\BaseOfData.Form2.resources
 D:\work\BD\BaseOfData\BaseOfData\obj\Debug\BaseOfData.Form3.resources
 D:\work\BD\BaseOfData\BaseOfData\obj\Debug\BaseOfData.Form4.resources
 D:\work\BD\BaseOfData\BaseOfData\obj\Debug\BaseOfData.Form5.resources
+D:\work\BD\BaseOfData\BaseOfData\obj\Debug\BaseOfData.Form6.resources
+D:\work\BD\BaseOfData\BaseOfData\obj\Debug\BaseOfData.Form7.resources
+D:\work\BD\BaseOfData\BaseOfData\obj\Debug\BaseOfData.csproj.ResolveComReference.cache
+D:\work\BD\BaseOfData\BaseOfData\obj\Debug\BaseOfData.Form8.resources

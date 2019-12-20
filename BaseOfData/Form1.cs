@@ -150,7 +150,7 @@ namespace BaseOfData
         {
             if (conn.State == ConnectionState.Open)
             {
-                string name = "SELECT name_subject, type_mark, count, semestr, surname_teacher  FROM " +
+                string name = "SELECT name_subject, type_mark, count, surname_teacher  FROM " +
                     "subject inner join accounting.teacher on teacher.idTeacher = subject.id_teacher ORDER BY name_subject;";
                 MySqlCommand command = new MySqlCommand(name, conn);
                 MySqlDataReader reader = command.ExecuteReader();
@@ -158,13 +158,12 @@ namespace BaseOfData
                 List<string[]> data = new List<string[]>();
                 while (reader.Read())
                 {
-                    data.Add(new string[5]);
+                    data.Add(new string[4]);
 
                     data[data.Count - 1][0] = reader[0].ToString();
                     data[data.Count - 1][1] = reader[1].ToString();
                     data[data.Count - 1][2] = reader[2].ToString();
                     data[data.Count - 1][3] = reader[3].ToString();
-                    data[data.Count - 1][4] = reader[4].ToString();
                 }
                 reader.Close();
                 dataGridView1.Columns.Clear();
@@ -460,6 +459,12 @@ namespace BaseOfData
         {
             Form7 form7 = new Form7(conn);
             form7.Show();
+        }
+
+        private void excelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form8 form8 = new Form8(conn);
+            form8.Show();
         }
     }
 }
