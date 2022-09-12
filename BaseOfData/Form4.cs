@@ -122,8 +122,6 @@ namespace BaseOfData
                             copyBD();
                             break;
                         }
-                    Form1 form1 = new Form1();
-                    form1.UpdateStudentTable(sender, e);
                 }
                 else MessageBox.Show(
                         "Выберите студента, которого нужно удалить из базы данных.",

@@ -65,8 +65,6 @@ namespace BaseOfData
                             InitGroupp();
                             break;
                         }
-                    Form1 form1 = new Form1();
-                    form1.UpdateStudentTable(sender, e);
                 }
                 else MessageBox.Show(
                         "Заполните все поля.",

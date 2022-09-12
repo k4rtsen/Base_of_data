@@ -393,38 +393,6 @@ namespace BaseOfData
                         MessageBoxIcon.Error);
         }
 
-        public void UpdateStudentTable(object sender, EventArgs e)
-        {
-        //    conn.Open();
-
-        //    string name = "SELECT surname_student, name_student, date_of_berth, name_group FROM " +
-        //        "student INNER JOIN accounting.groupp on groupp.idGroup = student.id_group ORDER BY surname_student;";
-        //    MySqlCommand command = new MySqlCommand(name, conn);
-        //    MySqlDataReader reader = command.ExecuteReader();
-
-        //    List<string[]> data = new List<string[]>();
-        //    while (reader.Read())
-        //    {
-        //        data.Add(new string[4]);
-
-        //        data[data.Count - 1][0] = reader[0].ToString();
-        //        data[data.Count - 1][1] = reader[1].ToString();
-        //        data[data.Count - 1][2] = reader[2].ToString();
-        //        data[data.Count - 1][3] = reader[3].ToString();
-        //    }
-        //    reader.Close();
-        //    dataGridView1.Columns.Clear();
-        //    dataGridView1.Rows.Clear();
-        //    dataGridView1.ColumnCount = data.Count;
-        //    dataGridView1.Columns[0].HeaderText = "Имя";
-        //    dataGridView1.Columns[1].HeaderText = "Фамилия";
-        //    dataGridView1.Columns[2].HeaderText = "Дата рождения";
-        //    dataGridView1.Columns[3].HeaderText = "Группа";
-        //    foreach (string[] s in data) dataGridView1.Rows.Add(s);
-
-        //    conn.Close();
-        }
-
         private void добавитьToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Form2 form2 = new Form2(conn);
